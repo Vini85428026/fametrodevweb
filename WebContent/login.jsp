@@ -48,8 +48,8 @@
                       <div class="well">
                           <form id="loginForm" method="POST" action="/Login">
                               <div class="form-group">
-                                  <label class="control-label">CPF</label>
-                                  <input type="text" class="form-control" id="usuario" name="usuario" value="" required placeholder="123.456.789-00">
+                                  <label class="control-label">CPF / Login</label>
+                                  <input type="text" class="form-control" id="usuario" name="usuario" value="" required placeholder="123.456.789-00 OU username">
                                  
                               </div>
                               <div class="form-group">

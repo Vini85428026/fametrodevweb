@@ -45,11 +45,19 @@
     
     <br><br><br>
 
-<div class="input-group">
-      <input type="text" class="form-control" placeholder="Insira sua pesquisa">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" name="ButtonPesquisa">Procurar</button>
-      </span>
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+    	<div class="well">
+        	<form id="loginForm" method="POST" action="/fametrodevweb/PesquisarPaciente">	
+			  <div class="input-group">
+			      <input type="text" name="inputPesquisa" class="form-control" placeholder="Insira sua pesquisa">
+			      <span class="input-group-btn">
+			        <button class="btn btn-default" type="submit" name="ButtonPesquisa">Procurar</button>
+			      </span>
+		      </div>
+      		</form>
+		</div>
+	</div>
 </div>
 
 </nav>

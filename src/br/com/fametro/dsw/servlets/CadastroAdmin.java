@@ -51,20 +51,20 @@ public class CadastroAdmin extends HttpServlet {
 			resultado = UsuarioServico.inserirUsuario(login, senha);
 			
 			if(resultado){
-				ses.setAttribute("mensagem","Administrador inserido com sucesso!");
-				response.sendRedirect("/fametrodevweb/dashboard.jsp");
+				request.setAttribute("mensagem", "Administrador inserido com sucesso!");
+				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 				System.out.println("admin inserido com sucesso!");
 			}else{
-				ses.setAttribute("mensagem","Erro ao inserir administrador!");
-				response.sendRedirect("/fametrodevweb/cadastroadm.jsp");
+				request.setAttribute("mensagem", "Erro ao inserir administrador!");
+				request.getRequestDispatcher("cadastroadm.jsp").forward(request, response);
 				System.out.println("erro ao inserir admin!");
 			}
 		} catch (InvalidKeyException | ClassNotFoundException
 				| NoSuchAlgorithmException | NoSuchPaddingException
 				| IllegalBlockSizeException | BadPaddingException e) {
 			e.printStackTrace();
-			ses.setAttribute("mensagem","Erro ao inserir administrador!");
-			response.sendRedirect("/fametrodevweb/cadastroadm.jsp");
+			request.setAttribute("mensagem", "Erro ao inserir administrador!");
+			request.getRequestDispatcher("cadastroadm.jsp").forward(request, response);
 			System.out.println("erro ao inserir admin!");
 		}		
 	}

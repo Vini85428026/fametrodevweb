@@ -13,6 +13,8 @@ public class Paciente {
 	private String email;
 	private String cpf;
 	private String senha;
+	private String idadeBiologica;
+	private String idadeCronologica;
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -72,6 +74,18 @@ public class Paciente {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getIdadeBiologica() {
+		return idadeBiologica;
+	}
+	public void setIdadeBiologica(String idadeBiologica) {
+		this.idadeBiologica = idadeBiologica;
+	}
+	public String getIdadeCronologica() {
+		return idadeCronologica;
+	}
+	public void setIdadeCronologica(String idadeCronologica) {
+		this.idadeCronologica = idadeCronologica;
 	}
 	
 	

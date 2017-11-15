@@ -2,7 +2,11 @@ package br.com.fametro.dsw.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+
+import com.mysql.jdbc.Statement;
 
 import br.com.fametro.dsw.jdbc.ConnectionFactory;
 import br.com.fametro.dsw.modelo.Paciente;
@@ -36,5 +40,37 @@ public class PacienteDAO {
 		ConnectionFactory.FecharConexao();
 		
 		return result;
-}
+	}
+	
+	public Paciente buscar(String pesquisa) throws ClassNotFoundException, ParseException{
+		
+		Connection conexao = ConnectionFactory.abrirConexao();
+		int count = 0;
+		try {
+			Statement st = (Statement) conexao.createStatement();
+			Paciente pp = new Paciente();
+			
+			ResultSet res = st.executeQuery("SELECT * FROM paciente WHERE email='" + pesquisa + "' LIMIT 1");
+			while (res.next()){
+                count = res.getInt(1);
+ 
+                pp.setIdCliente(Integer.parseInt(res.getString("idCliente")));
+                pp.setNome(res.getString("nome"));
+                pp.setIdadeBiologica(res.getString("idadeBiologica"));
+                pp.setIdadeCronologica(res.getString("idadeCronologica"));
+            }
+			
+			if(count > 0){
+				return pp;
+			}
+
+			st.close();	
+		} catch (SQLException e) {
+			System.out.println(e);
+		}finally{
+			ConnectionFactory.FecharConexao();
+		}
+		
+		return null;
+	}
 }

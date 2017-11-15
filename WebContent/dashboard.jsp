@@ -74,5 +74,11 @@ processo de envelhecimento.
         <p> Alunos ADS FAMETRO 2017</p>
 </footer>
 
+<c:if test="${mensagem != null}">
+	<script>
+		alert('<c:out value="${mensagem}" />');
+	</script>
+</c:if>
+
 </body>
 </html>

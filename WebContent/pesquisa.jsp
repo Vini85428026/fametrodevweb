@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,7 +51,7 @@
     	<div class="well">
         	<form id="loginForm" method="POST" action="/fametrodevweb/PesquisarPaciente">	
 			  <div class="input-group">
-			      <input type="text" name="inputPesquisa" class="form-control" placeholder="Insira sua pesquisa">
+			      <input type="email" name="inputPesquisa" class="form-control" required placeholder="Busque por email...">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default" type="submit" name="ButtonPesquisa">Procurar</button>
 			      </span>
@@ -69,19 +70,19 @@
       <div class="form-group">
          <label class="col-md-4 control-label">Nome</label>  
          <div class="col-md-4">
-            <input id="inputResultNome" name="inputResultNome" type="text"  class="form-control input-md" required>
+            <input id="inputResultNome" name="inputResultNome" type="text" value='<c:out value="${nome}" />' disabled class="form-control input-md" required>
          </div>
       </div>
       <div class="form-group">
-         <label class="col-md-4 control-label">Idade</label>  
+         <label class="col-md-4 control-label">Idade Cronologica</label>  
          <div class="col-md-4">
-            <input id="inputResultIdadeCrono" name="inputResultIdadeCrono" type="text" class="form-control input-md" required>
+            <input id="inputResultIdadeCrono" name="inputResultIdadeCrono" type="text" value='<c:out value="${idadeCrono}" />' disabled class="form-control input-md" required>
          </div>
       </div>
       <div class="form-group">
-         <label class="col-md-4 control-label">Peso</label>  
+         <label class="col-md-4 control-label">Idade Biológica</label>  
          <div class="col-md-4">
-            <input id="inputResultIdadeBio" name="inputResultIdadeBio" type="text"class="form-control input-md" required> 
+            <input id="inputResultIdadeBio" name="inputResultIdadeBio" value='<c:out value="${idadeBio}" />' disabled type="text" class="form-control input-md" required> 
          </div>
       </div>
       <br>
@@ -98,6 +99,12 @@
 <footer>
         <p> Alunos ADS FAMETRO 2017</p>
 </footer>
+
+<c:if test="${mensagem == 'undefined'}">
+	<script>
+		alert("Paciente não encontrado!");
+	</script>
+</c:if>
 
 </body>
 </html>

@@ -47,13 +47,13 @@
          </div>
       </div>
       <div class="form-group">
-         <label class="col-md-4 control-label">Idade Cronológica</label>  
+         <label class="col-md-4 control-label">Idade</label>  
          <div class="col-md-4">
             <input id="inputResultIdadeCrono" name="inputResultIdadeCrono" type="text" class="form-control input-md" value="22" >
          </div>
       </div>
       <div class="form-group">
-         <label class="col-md-4 control-label">Idade Biológica</label>  
+         <label class="col-md-4 control-label">Peso</label>  
          <div class="col-md-4">
             <input id="inputResultIdadeBio" name="inputResultIdadeBio" type="text"class="form-control input-md" value="98"> 
          </div>

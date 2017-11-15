@@ -1,11 +1,16 @@
 package br.com.fametro.dsw.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.HashMap;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.fametro.dsw.servicos.PacienteServico;
 
 /**
  * Servlet implementation class PesquisarPaciente
@@ -35,7 +40,23 @@ public class PesquisarPaciente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pesquisa = request.getParameter("inputPesquisa");
 		
-		System.out.println(pesquisa);
+		HashMap<String, String> paciente;
+		try {
+			paciente = PacienteServico.buscarPaciente(pesquisa);
+			if(paciente != null){
+				request.setAttribute("nome", paciente.get("nome"));
+				request.setAttribute("idadeCrono", paciente.get("idadeCrono"));
+				request.setAttribute("idadeBio", paciente.get("idadeBio"));
+			}else{
+				request.setAttribute("mensagem", "undefined");
+			}
+		} catch (ClassNotFoundException | ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		request.getRequestDispatcher("pesquisa.jsp").forward(request, response);
 	}
 
 }

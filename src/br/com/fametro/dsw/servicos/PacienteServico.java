@@ -20,7 +20,7 @@ public class PacienteServico {
 		pa.setDataDeNascimento(dataNascimento);
 		pa.setPeso(Float.parseFloat(mapper.get("peso")));
 		pa.setAltura(Float.parseFloat(mapper.get("altura")));
-		pa.setImc(Float.parseFloat(mapper.get("imc")));
+		pa.setImc(calcularImc(Float.parseFloat(mapper.get("peso")), Float.parseFloat(mapper.get("altura"))));
 		pa.setGenero(mapper.get("genero"));
 		pa.setEmail(mapper.get("email"));
 		pa.setCpf(mapper.get("cpf"));
@@ -44,5 +44,11 @@ public class PacienteServico {
 		}
 		
 		return null;
+	}
+	
+	public static Float calcularImc(Float peso, Float altura){
+		Float imc = peso / (altura*altura);
+				
+		return imc;
 	}
 }

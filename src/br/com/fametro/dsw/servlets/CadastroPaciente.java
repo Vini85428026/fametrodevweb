@@ -43,7 +43,6 @@ public class CadastroPaciente extends HttpServlet {
 		mapper.put("dataNasc", request.getParameter("inputCadIdade"));
 		mapper.put("peso", request.getParameter("inputCadPeso"));
 		mapper.put("altura", request.getParameter("inputCadAltura"));
-		mapper.put("imc", request.getParameter("inputCadIMC"));
 		mapper.put("genero", request.getParameter("radiosCadGenero"));
 		mapper.put("email", request.getParameter("inputCadEmail"));
 		mapper.put("cpf", request.getParameter("inputCadCPF"));

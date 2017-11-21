@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.mysql.jdbc.Statement;
 
@@ -42,26 +45,31 @@ public class PacienteDAO {
 		return result;
 	}
 	
-	public Paciente buscar(String pesquisa) throws ClassNotFoundException, ParseException{
+	public List<Paciente> buscar(String pesquisa) throws ClassNotFoundException, ParseException{
 		
 		Connection conexao = ConnectionFactory.abrirConexao();
 		int count = 0;
 		try {
 			Statement st = (Statement) conexao.createStatement();
-			Paciente pp = new Paciente();
 			
-			ResultSet res = st.executeQuery("SELECT * FROM paciente WHERE email='" + pesquisa + "' LIMIT 1");
+			List ll = new LinkedList();
+			ResultSet res = st.executeQuery("SELECT * FROM paciente WHERE email LIKE '%" + pesquisa + "%' OR "
+					+ "nome LIKE '%" + pesquisa + "%'");
 			while (res.next()){
                 count = res.getInt(1);
  
-                pp.setIdCliente(Integer.parseInt(res.getString("idCliente")));
-                pp.setNome(res.getString("nome"));
-                pp.setIdadeBiologica(res.getString("idadeBiologica"));
-                pp.setIdadeCronologica(res.getString("idadeCronologica"));
+                Paciente pp1 = new Paciente();
+                pp1.setIdCliente(Integer.parseInt(res.getString("idCliente")));
+                pp1.setNome(res.getString("nome"));
+                pp1.setIdadeBiologica(res.getString("idadeBiologica"));
+                pp1.setIdadeCronologica(res.getString("idadeCronologica"));
+                pp1.setImc(Float.parseFloat(res.getString("imc")));
+                
+                ll.add(pp1);                
             }
 			
 			if(count > 0){
-				return pp;
+				return ll;
 			}
 
 			st.close();	

@@ -42,16 +42,13 @@
 <br>
 <br>
 
-<div class="col-md-6 col-md-offset-3">
-    
     <br><br><br>
 
-<div class="row">
 	<div class="col-xs-12 col-md-12">
     	<div class="well">
         	<form id="loginForm" method="POST" action="/fametrodevweb/PesquisarPaciente">	
 			  <div class="input-group">
-			      <input type="email" name="inputPesquisa" class="form-control" required placeholder="Busque por email...">
+			      <input type="text" name="inputPesquisa" class="form-control" required placeholder="Busque por email...">
 			      <span class="input-group-btn">
 			        <button class="btn btn-default" type="submit" name="ButtonPesquisa">Procurar</button>
 			      </span>
@@ -59,43 +56,42 @@
       		</form>
 		</div>
 	</div>
-</div>
-
-</nav>
       <br> <br> <br> 
-      <form class="form-horizontal" action="" method="post">
-      <div class="form-group">
-         <label class="col-md-7 control-label"> Resultado do usuário: </label>
-      </div>
-      <div class="form-group">
-         <label class="col-md-4 control-label">Nome</label>  
-         <div class="col-md-4">
-            <input id="inputResultNome" name="inputResultNome" type="text" value='<c:out value="${nome}" />' disabled class="form-control input-md" required>
-         </div>
-      </div>
-      <div class="form-group">
-         <label class="col-md-4 control-label">Idade Cronologica</label>  
-         <div class="col-md-4">
-            <input id="inputResultIdadeCrono" name="inputResultIdadeCrono" type="text" value='<c:out value="${idadeCrono}" />' disabled class="form-control input-md" required>
-         </div>
-      </div>
-      <div class="form-group">
-         <label class="col-md-4 control-label">Idade Biológica</label>  
-         <div class="col-md-4">
-            <input id="inputResultIdadeBio" name="inputResultIdadeBio" value='<c:out value="${idadeBio}" />' disabled type="text" class="form-control input-md" required> 
-         </div>
-      </div>
-      <br>
-	  
-	   <nav aria-label="Page navigation" align="center">
-               <ul class="pagination">
-                  <li>
-                     <a href="./resultado.jsp" aria-label="Next">
-                     <span aria-hidden="true">Imprimir</span>
-                     </a>
-                  </li>
-               </ul>
-       </nav>
+	<div class="col-xs-12 col-md-12">     
+      <div class="container">
+		  <table class="table">
+		    <thead>
+		      <tr>
+		        <th>Nome</th>
+		        <th>Idade Cronologica</th>
+		        <th>Idade Biologica</th>
+		        <th>IMC</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<c:forEach items="${listaPesquisa}" var="item">
+				    <tr>
+				    	<td>${item.nome}</td>
+				    	<c:if test="${item.idadeCronologica != null}">
+							<td>${item.idadeCronologica}</td>
+						</c:if>
+						<c:if test="${item.idadeCronologica == null}">
+							<td> - </td>
+						</c:if>
+						<c:if test="${item.idadeBiologica != null}">
+							<td>${item.idadeBiologica}</td>
+						</c:if>
+						<c:if test="${item.idadeBiologica == null}">
+							<td> - </td>
+						</c:if>
+				    	<td>${item.imc}</td>
+				    </tr>
+				</c:forEach>
+		    </tbody>
+		  </table>
+</div>
+</div>
+      
 <footer>
         <p> Alunos ADS FAMETRO 2017</p>
 </footer>

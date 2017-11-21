@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+
 import br.com.fametro.dsw.dao.PacienteDAO;
 import br.com.fametro.dsw.modelo.Paciente;
 
@@ -30,17 +32,12 @@ public class PacienteServico {
 		return paDao.inserir(pa);
 	}
 	
-	public static HashMap<String, String> buscarPaciente(String pesquisa) throws ClassNotFoundException, ParseException{
+	public static List<Paciente> buscarPaciente(String pesquisa) throws ClassNotFoundException, ParseException{
 		PacienteDAO paDAO = new PacienteDAO();
-		Paciente paRes = paDAO.buscar(pesquisa);
+		List paRes = paDAO.buscar(pesquisa);
 		
 		if(paRes != null){
-			HashMap<String, String> map = new HashMap<String, String>();			
-			map.put("nome", paRes.getNome());
-			map.put("idadeCrono", (paRes.getIdadeCronologica() == null) ? "-" :  paRes.getIdadeCronologica());
-			map.put("idadeBio", (paRes.getIdadeBiologica() == null) ? "-" :  paRes.getIdadeBiologica());
-			
-			return map;
+			return paRes;
 		}
 		
 		return null;

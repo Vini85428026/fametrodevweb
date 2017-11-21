@@ -3,6 +3,7 @@ package br.com.fametro.dsw.servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.fametro.dsw.modelo.Paciente;
 import br.com.fametro.dsw.servicos.PacienteServico;
 
 /**
@@ -40,13 +42,11 @@ public class PesquisarPaciente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pesquisa = request.getParameter("inputPesquisa");
 		
-		HashMap<String, String> paciente;
 		try {
-			paciente = PacienteServico.buscarPaciente(pesquisa);
-			if(paciente != null){
-				request.setAttribute("nome", paciente.get("nome"));
-				request.setAttribute("idadeCrono", paciente.get("idadeCrono"));
-				request.setAttribute("idadeBio", paciente.get("idadeBio"));
+			List pacientes = PacienteServico.buscarPaciente(pesquisa);
+			if(pacientes != null){		
+				request.setAttribute("listaPesquisa", pacientes);
+				System.out.println(pacientes);
 			}else{
 				request.setAttribute("mensagem", "undefined");
 			}

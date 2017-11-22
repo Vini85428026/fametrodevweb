@@ -1,9 +1,6 @@
 package br.com.fametro.dsw.servlets;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,20 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.fametro.dsw.modelo.Paciente;
-import br.com.fametro.dsw.servicos.PacienteServico;
-
 /**
- * Servlet implementation class PesquisarPaciente
+ * Servlet implementation class Login
  */
-@WebServlet("/PesquisarPaciente")
-public class PesquisarPaciente extends HttpServlet {
+@WebServlet("/Login")
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PesquisarPaciente() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,29 +28,22 @@ public class PesquisarPaciente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pesquisa = request.getParameter("inputPesquisa");
+		// TODO Auto-generated method stub
+		String login = request.getParameter("usuario");
+		String senha = request.getParameter("password");
 		
-		try {
-			List pacientes = PacienteServico.buscarPaciente(pesquisa);
-			if(pacientes != null){		
-				request.setAttribute("listaPesquisa", pacientes);
-			}else{
-				request.setAttribute("mensagem", "undefined");
-			}
-		} catch (ClassNotFoundException | ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		boolean resultado = LoginService.login();
 		
 		
-		request.getRequestDispatcher("pesquisa.jsp").forward(request, response);
+		
+		
 	}
 
 }

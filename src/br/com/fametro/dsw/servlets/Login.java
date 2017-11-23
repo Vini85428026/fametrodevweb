@@ -1,12 +1,16 @@
 package br.com.fametro.dsw.servlets;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import br.com.fametro.dsw.servicos.LoginService;
 
 /**
  * Servlet implementation class Login
@@ -38,11 +42,30 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		String login = request.getParameter("usuario");
 		String senha = request.getParameter("password");
+		//HTTP Session
+		HttpSession sessao = request.getSession();
 		
-		boolean resultado = LoginService.login();
-		
-		
-		
+		HashMap<String, String> paciente;
+		try {
+			paciente = LoginService.buscarUsuario(login, senha);
+			if(paciente != null){
+				sessao.setAttribute("id", paciente.get("id"));
+				sessao.setAttribute("nome", paciente.get("nome"));
+				sessao.setAttribute("tipo", paciente.get("tipo"));
+				sessao.setAttribute("imc", paciente.get("imc"));
+				sessao.setAttribute("idadeCrono", paciente.get("idadeCrono"));
+				sessao.setAttribute("idadeBio", paciente.get("idadeBio"));
+				
+				request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+			}else{
+				request.setAttribute("mensagem", "undefined");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 	}
 

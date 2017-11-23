@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,7 +47,7 @@
               <div class="row">
                   <div class="col-xs-6">
                       <div class="well">
-                          <form id="loginForm" method="POST" action="/Login">
+                          <form id="loginForm" method="POST" action="/fametrodevweb/Login">
                               <div class="form-group">
                                   <label class="control-label">CPF / Login</label>
                                   <input type="text" class="form-control" id="usuario" name="usuario" value="" required placeholder="123.456.789-00 OU username">
@@ -81,6 +82,12 @@
 
 <br>
 <br>
+
+<c:if test="${mensagem == 'undefined'}">
+	<script>
+		alert("Login ou senha estão errados!");
+	</script>
+</c:if>
 <footer>
         <p> Alunos ADS FAMETRO 2017</p>
 </footer>

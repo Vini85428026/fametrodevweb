@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" session="false"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +18,12 @@
     
 </head>
 <body>
+<%
+HttpSession sessionsa = request.getSession(false);
+	String idSessao = (String) sessionsa.getAttribute("id");
+	String nomeSessao = (String) sessionsa.getAttribute("nome");
+
+%>
 
 <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
@@ -33,7 +40,7 @@
                </ul>
       
       <ul class="nav navbar-nav navbar-right">  
-				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> usuário </a></li>
+				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nomeSessao} </a></li>
                   <li><a href="./index.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
         
       </ul>

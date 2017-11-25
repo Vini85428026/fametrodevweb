@@ -43,19 +43,19 @@
 
          <label class="col-md-4 control-label">Nome</label>  
          <div class="col-md-4">
-            <input id="inputResultNome" name="inputResultNome" type="text"  class="form-control input-md" value="Humberto Valente" >
+            <input id="inputResultNome" name="inputResultNome" type="text"  class="form-control input-md" value="${nomeDoCliente}" disabled >
          </div>
       </div>
       <div class="form-group">
-         <label class="col-md-4 control-label">Idade</label>  
+         <label class="col-md-4 control-label">Idade Biologica</label>  
          <div class="col-md-4">
-            <input id="inputResultIdadeCrono" name="inputResultIdadeCrono" type="text" class="form-control input-md" value="22" >
+            <input id="inputResultIdadeCrono" name="inputResultIdadeCrono" type="text" class="form-control input-md" value="${idadeBio}" disabled >
          </div>
       </div>
       <div class="form-group">
-         <label class="col-md-4 control-label">Peso</label>  
+         <label class="col-md-4 control-label">Idade Cronológica</label>  
          <div class="col-md-4">
-            <input id="inputResultIdadeBio" name="inputResultIdadeBio" type="text"class="form-control input-md" value="98"> 
+            <input id="inputResultIdadeBio" name="inputResultIdadeBio" type="text"class="form-control input-md" value="${idadeCrono}" disabled> 
          </div>
       </div>
       <br> <br> <br> <br> <br>

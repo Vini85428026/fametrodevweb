@@ -1,12 +1,22 @@
 package br.com.fametro.dsw.servlets;
 
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.fametro.dsw.modelo.Paciente;
+import br.com.fametro.dsw.servicos.QuestionarioServico;
+import br.com.fametro.dsw.servicos.UsuarioServico;
 
 /**
  * Servlet implementation class Questionario
@@ -35,22 +45,42 @@ public class Questionario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String radio1 = request.getParameter("radios1");
-		String radio2 = request.getParameter("radios2");
-		String radio3 = request.getParameter("radios3");
-		String radio4 = request.getParameter("radios4");
-		String radio5 = request.getParameter("radios5");
-		String radio6 = request.getParameter("radios6");
-		String radio7 = request.getParameter("radios7");
-		String radio8 = request.getParameter("radios8");
-		String radio9 = request.getParameter("radios9");
-		String radio10 = request.getParameter("radios10");
-		String radio11 = request.getParameter("radios11");
-		String radio12 = request.getParameter("radios12");
-		String radio13 = request.getParameter("radios13");
+		int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+
+		HashMap<String, Integer> map = new HashMap<String, Integer>();	
+		map.put("radio1", Integer.parseInt(request.getParameter("radios1")));
+		map.put("radio2", Integer.parseInt(request.getParameter("radios2")));
+		map.put("radio3", Integer.parseInt(request.getParameter("radios3")));
+		map.put("radio4", Integer.parseInt(request.getParameter("radios4")));
+		map.put("radio5", Integer.parseInt(request.getParameter("radios5")));
+		map.put("radio6", Integer.parseInt(request.getParameter("radios6")));
+		map.put("radio7", Integer.parseInt(request.getParameter("radios7")));
+		map.put("radio8", Integer.parseInt(request.getParameter("radios8")));
+		map.put("radio9", Integer.parseInt(request.getParameter("radios9")));
+		map.put("radio10", Integer.parseInt(request.getParameter("radios10")));
+		map.put("radio11", Integer.parseInt(request.getParameter("radios11")));
+		map.put("radio12", Integer.parseInt(request.getParameter("radios12")));
+		map.put("radio13", Integer.parseInt(request.getParameter("radios13")));
 		
-		System.out.println(radio1 + radio2 + radio3 + radio4);
-				
+		Paciente resultado;
+		try {
+			resultado = QuestionarioServico.inserirQuestionario(idCliente, map);
+			if(resultado != null){
+				request.setAttribute("nomeDoCliente", resultado.getNome());
+				request.setAttribute("idadeBio", resultado.getIdadeBiologica());
+				request.setAttribute("idadeCrono", resultado.getIdadeCronologica());
+				request.setAttribute("mensagem", "Questionário resolvido com sucesso!");
+				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+				System.out.println("admin inserido com sucesso!");
+			}else{
+				request.setAttribute("mensagem", "Erro ao resolver questionário!");
+				request.getRequestDispatcher("questions.jsp").forward(request, response);
+				System.out.println("erro ao inserir questoes!");
+			}		
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 }

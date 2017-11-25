@@ -45,7 +45,6 @@ public class CadastroAdmin extends HttpServlet {
 		String login = request.getParameter("inputCadEmail");
 		String senha = request.getParameter("inputCadSenha");
 				
-		HttpSession ses = request.getSession();
 		boolean resultado;
 		try {
 			resultado = UsuarioServico.inserirUsuario(login, senha);

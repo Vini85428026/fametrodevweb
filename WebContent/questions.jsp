@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +27,7 @@
                </ul>
       
       <ul class="nav navbar-nav navbar-right">   
-				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Usuário</a></li>
+				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nome}</a></li>
                   <li><a href="./index.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
         
       </ul>
@@ -39,7 +39,7 @@
 <br>
 <br>
       <div class="box">
-         <form class="form-horizontal method="POST" action="/Questionario">
+         <form class="form-horizontal" method="POST" action="/fametrodevweb/Questionario">
             <div class="form-group">
                <label class="col-md-4 control-label" for="radios">1 - Quantas vezes você ingere bebidas alcoólicas?</label>
                <div class="col-md-4">
@@ -78,25 +78,25 @@
                <label class="col-md-4 control-label" for="radios">2 - Quando você fica cansado, você:</label>
                <div class="col-md-4">
                   <div class="radio">
-                     <label for="radios-0">
-                     <input type="radio" name="radios2" id="radios-0" value="-2">
+                     <label for="radios-5">
+                     <input type="radio" name="radios2" id="radios-5" value="-2" required>
                      A. Calça seus tênis ou liga para uma namorada 
                      </label>
                   </div>
                   <div class="radio">
-                     <label for="radios-1">
-                     <input type="radio" name="radios2" id="radios-1" value="-2">
+                     <label for="radios-6">
+                     <input type="radio" name="radios2" id="radios-6" value="-2" required>
                      B. Faz algumas respirações profundas e continua indo 
                      </label>
                   </div>
                   <div class="radio">
-                     <label for="radios-2">
-                        <input type="radio" name="radios2" id="radios-2" value="5">
+                     <label for="radios-7">
+                        <input type="radio" name="radios2" id="radios-7" value="5" required>
                         C. Vai preparar alguns brownies?
                   </div>
                   <div class="radio">
-                  <label for="radios-3">
-                  <input type="radio" name="radios2" id="radios-3" value="5">
+                  <label for="radios-8">
+                  <input type="radio" name="radios2" id="radios-8" value="5" required>
                   D. Não faz nada
                   </label>
                   </div>
@@ -106,31 +106,31 @@
                <label class="col-md-4 control-label" for="radios">3. Com que frequência você come carne vermelha?</label>
                <div class="col-md-4">
                   <div class="radio">
-                     <label for="radios-0">
-                     <input type="radio" name="radios3" id="radios-0" value="12">
+                     <label for="radios-9">
+                     <input type="radio" name="radios3" id="radios-9" value="12" required>
                      A. Todos os dias
                      </label>
                   </div>
                   <div class="radio">
-                     <label for="radios-1">
-                     <input type="radio" name="radios3" id="radios-1" value="5">
+                     <label for="radios-10">
+                     <input type="radio" name="radios3" id="radios-10" value="5" required>
                      B. De uma a três vezes por semana
                      </label>
                   </div>
                   <div class="radio">
-                     <label for="radios-2">
-                        <input type="radio" name="radios3" id="radios-2" value="0">
+                     <label for="radios-11">
+                        <input type="radio" name="radios3" id="radios-11" value="0" required>
                         C. Uma ou duas vezes por mês
                   </div>
                   <div class="radio">
-                  <label for="radios-3">
-                  <input type="radio" name="radios3" id="radios-3" value="-5">
+                  <label for="radios-12">
+                  <input type="radio" name="radios3" id="radios-12" value="-5" required>
                   D. Nunca
                   </label>
                   </div>
                   <div class="radio">
-                     <label for="radios-4">
-                     <input type="radio" name="radios3" id="radios-4" value="0">
+                     <label for="radios-13">
+                     <input type="radio" name="radios3" id="radios-13" value="0" required>
                      E. Nenhuma
                      </label>
                   </div>
@@ -141,24 +141,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios4" id="radios-0" value="3">
+                     <input type="radio" name="radios4" id="radios-0" value="3" required>
                      A. Ensino fundamental
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios4" id="radios-1" value="0">
+                     <input type="radio" name="radios4" id="radios-1" value="0" required>
                      B. Ensino Médio
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios4" id="radios-2" value="-4">
+                        <input type="radio" name="radios4" id="radios-2" value="-4" required>
                         C. Faculdade/Universidade
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios4" id="radios-3" value="-5">
+                  <input type="radio" name="radios4" id="radios-3" value="-5" required>
                   D. Pós-Graduação
                   </label>
                   </div>
@@ -169,24 +169,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios5" id="radios-0" value="-2">
+                     <input type="radio" name="radios5" id="radios-0" value="-2" required>
                      A.Talvez 10 
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios5" id="radios-1" value="-3">
+                     <input type="radio" name="radios5" id="radios-1" value="-3" required>
                      B. Eu tenho uma enorme rede de apoio
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios5" id="radios-2" value="0">
+                        <input type="radio" name="radios5" id="radios-2" value="0" required>
                         C. Um pequeno grupo de amigos e família
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios5" id="radios-3" value="2">
+                  <input type="radio" name="radios5" id="radios-3" value="2" required>
                   D. Eu provavelmente iria sozinho(a)
                   </label>
                   </div>
@@ -197,24 +197,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios6" id="radios-0" value="-5">
+                     <input type="radio" name="radios6" id="radios-0" value="-5" required>
                      A. Eu estou em uma escola, igreja, artes ou atividades de caridade
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios6" id="radios-1" value="-3">
+                     <input type="radio" name="radios6" id="radios-1" value="-3" required>
                      B. Sou voluntário regularmente
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios6" id="radios-2" value="-1">
+                        <input type="radio" name="radios6" id="radios-2" value="-1" required>
                         C. Eu arremesso uma ou duas vezes por ano
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios6" id="radios-3" value="0">
+                  <input type="radio" name="radios6" id="radios-3" value="0" required>
                   D. Eu escrevo um cheque de vez em quando
                   </label>
                   </div>
@@ -225,24 +225,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios7" id="radios-0" value="-12">
+                     <input type="radio" name="radios7" id="radios-0" value="-12" required>
                      A. Todos os dias
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios7" id="radios-1" value="-9">
+                     <input type="radio" name="radios7" id="radios-1" value="-9" required>
                      B. Quatro ou cinco
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios7" id="radios-2" value="-4">
+                        <input type="radio" name="radios7" id="radios-2" value="-4" required>
                         C. . Um a três
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios7" id="radios-3" value="5">
+                  <input type="radio" name="radios7" id="radios-3" value="5" required>
                   D. Caminhar dentro de casa conta?
                   </label>
                   </div>
@@ -253,30 +253,30 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios8" id="radios-0" value="0">
+                     <input type="radio" name="radios8" id="radios-0" value="0" required>
                      A.Eu nunca fui fumante
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios8" id="radios-1" value="8">
+                     <input type="radio" name="radios8" id="radios-1" value="8" required>
                      B. Trago um cigarro nos fins de semana
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios8" id="radios-2" value="4">
+                        <input type="radio" name="radios8" id="radios-2" value="4" required>
                         C. Eu abandonei e eu me sinto muito melhor
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios8" id="radios-3" value="10">
+                  <input type="radio" name="radios8" id="radios-3" value="10" required>
                   D.  Eu abandonei, mas eu ainda tem problemas com meus pulmãos
                   </label>
                   </div>
                   <div class="radio">
                      <label for="radios-4">
-                     <input type="radio" name="radios8" id="radios-4" value="20">
+                     <input type="radio" name="radios8" id="radios-4" value="20" required>
                      E.  Eu fumo regularmente
                      </label>
                   </div>
@@ -287,24 +287,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios9" id="radios-0" value="2">
+                     <input type="radio" name="radios9" id="radios-0" value="2" required>
                      A. Um hambúrguer, batata frita e sobremesa
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios9" id="radios-1" value="-4">
+                     <input type="radio" name="radios9" id="radios-1" value="-4" required>
                      B. Legumes torrados com quinoa e grão-de-bico
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios9" id="radios-2" value="-5">
+                        <input type="radio" name="radios9" id="radios-2" value="-5" required>
                         C. Salmão com espinafre e arroz integral
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios9" id="radios-3" value="0">
+                  <input type="radio" name="radios9" id="radios-3" value="0" required>
                   D. Penne com frango e salada
                   </label>
                   </div>
@@ -315,24 +315,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios10" id="radios-0" value="-3">
+                     <input type="radio" name="radios10" id="radios-0" value="-3" required>
                      A. Tenho que ter minhas duas ou três xícaras por dia
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios10" id="radios-1" value="-3">
+                     <input type="radio" name="radios10" id="radios-1" value="-3" required>
                      B. Eu praticamente vivo na Starbucks 
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios10" id="radios-2" value="0">
+                        <input type="radio" name="radios10" id="radios-2" value="0" required> 
                         C. Uma caneca da manhã
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios10" id="radios-3" value="0">
+                  <input type="radio" name="radios10" id="radios-3" value="0" required>
                   D. Eu não sou fã 
                   </label>
                   </div>
@@ -343,24 +343,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios11" id="radios-0" value="-4">
+                     <input type="radio" name="radios11" id="radios-0" value="-4" required>
                      A.Eu durmo seis a sete horas por noite
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios11" id="radios-1" value="-4">
+                     <input type="radio" name="radios11" id="radios-1" value="-4" required>
                      B. Eu gosto de 8 a 10 horas se eu conseguir isso
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios11" id="radios-2" value="5">
+                        <input type="radio" name="radios11" id="radios-2" value="5" required>
                         C. Eu descanso entre quatro a seis horas
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios11" id="radios-3" value="7">
+                  <input type="radio" name="radios11" id="radios-3" value="7" required>
                   D.  Eu só durmo 4 horas
                   </label>
                   </div>
@@ -371,24 +371,24 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios12" id="radios-0" value="0">
+                     <input type="radio" name="radios12" id="radios-0" value="0" required> 
                      A. Eu não estou tendo muita ação
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios12" id="radios-1" value="-3">
+                     <input type="radio" name="radios12" id="radios-1" value="-3" required>
                      B. Eu faço sexo três vezes por semana em média
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                        <input type="radio" name="radios12" id="radios-2" value="-3">
+                        <input type="radio" name="radios12" id="radios-2" value="-3" required>
                         C. Mais comum uma vez por semana para mim 
                   </div>
                   <div class="radio">
                   <label for="radios-3">
-                  <input type="radio" name="radios12" id="radios-3" value="0">
+                  <input type="radio" name="radios12" id="radios-3" value="0" required>
                   D. Eu fico tranquilo talvez uma vez por mês
                   </label>
                   </div>
@@ -399,19 +399,19 @@
                <div class="col-md-4">
                   <div class="radio">
                      <label for="radios-0">
-                     <input type="radio" name="radios13" id="radios-0" value="-10">
+                     <input type="radio" name="radios13" id="radios-0" value="-10" required>
                      A. Pelo menos uma pessoa na minha família
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-1">
-                     <input type="radio" name="radios13" id="radios-1" value="0">
+                     <input type="radio" name="radios13" id="radios-1" value="0" required>
                      B. Não tenho certeza
                      </label>
                   </div>
                   <div class="radio">
                      <label for="radios-2">
-                     <input type="radio" name="radios13" id="radios-2" value="0">
+                     <input type="radio" name="radios13" id="radios-2" value="0" required>
                      C. Não 
                   </div>
                </div>
@@ -419,9 +419,8 @@
 			<nav aria-label="Page navigation" align="center">
                <ul class="pagination">
                   <li>
-                     <a href="./resultado.jsp" aria-label="Next">
-                     <span aria-hidden="true">Concluir</span>
-                     </a>
+                  	 <input type="submit" value="Concluir" class="btn btn-default" />		
+                     
                   </li>
                </ul>
             </nav>

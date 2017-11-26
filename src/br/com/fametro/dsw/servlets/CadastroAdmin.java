@@ -51,7 +51,7 @@ public class CadastroAdmin extends HttpServlet {
 			
 			if(resultado){
 				request.setAttribute("mensagem", "Administrador inserido com sucesso!");
-				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 				System.out.println("admin inserido com sucesso!");
 			}else{
 				request.setAttribute("mensagem", "Erro ao inserir administrador!");

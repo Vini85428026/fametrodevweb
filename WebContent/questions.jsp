@@ -40,6 +40,7 @@
 <br>
       <div class="box">
          <form class="form-horizontal" method="POST" action="/fametrodevweb/Questionario">
+         <input type="hidden" name="idCliente" value="${id}" >
             <div class="form-group">
                <label class="col-md-4 control-label" for="radios">1 - Quantas vezes você ingere bebidas alcoólicas?</label>
                <div class="col-md-4">

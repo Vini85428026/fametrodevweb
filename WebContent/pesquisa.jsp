@@ -30,7 +30,7 @@
                </ul>
       
       <ul class="nav navbar-nav navbar-right">   
-				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> usuário </a></li>
+				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nome} </a></li>
                   <li><a href="./index.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
         
       </ul>

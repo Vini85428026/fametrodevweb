@@ -48,23 +48,22 @@ public class CadastroPaciente extends HttpServlet {
 		mapper.put("cpf", request.getParameter("inputCadCPF"));
 		mapper.put("senha", request.getParameter("inputCadSenha"));
 				
-		HttpSession ses = request.getSession();
 		try {
 			boolean resultado = PacienteServico.inserirPaciente(mapper);
 			if(resultado){
-				ses.setAttribute("mensagem","Paciente inserido com sucesso!");
-				response.sendRedirect("/fametrodevweb/dashboard.jsp");
+				request.setAttribute("mensagem", "Paciente inserido com sucesso!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 				System.out.println("paciente inserido com sucesso!");
 			}else{
-				ses.setAttribute("mensagem","Erro ao inserir paciente!");
-				response.sendRedirect("/fametrodevweb/cadastro.jsp");
+				request.setAttribute("mensagem", "Erro ao inserir paciente!");
+				request.getRequestDispatcher("cadastro.jsp").forward(request, response);
 				System.out.println("erro ao inserir paciente!");
 			}	
 		} catch (ClassNotFoundException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			ses.setAttribute("mensagem","Erro ao inserir paciente!");
-			response.sendRedirect("/fametrodevweb/cadastro.jsp");
+			request.setAttribute("mensagem", "Erro ao inserir paciente!");
+			request.getRequestDispatcher("cadastro.jsp").forward(request, response);
 			System.out.println("erro ao inserir paciente!");
 		}	
 	}

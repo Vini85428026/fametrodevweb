@@ -70,8 +70,8 @@ public class Questionario extends HttpServlet {
 				request.setAttribute("idadeBio", resultado.getIdadeBiologica());
 				request.setAttribute("idadeCrono", resultado.getIdadeCronologica());
 				request.setAttribute("mensagem", "Questionário resolvido com sucesso!");
-				request.getRequestDispatcher("dashboard.jsp").forward(request, response);
-				System.out.println("admin inserido com sucesso!");
+				request.getRequestDispatcher("resultado.jsp").forward(request, response);
+				System.out.println("Questionário resolvido com sucesso!");
 			}else{
 				request.setAttribute("mensagem", "Erro ao resolver questionário!");
 				request.getRequestDispatcher("questions.jsp").forward(request, response);

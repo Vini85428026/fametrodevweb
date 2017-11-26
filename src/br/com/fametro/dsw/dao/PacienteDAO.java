@@ -81,4 +81,38 @@ public class PacienteDAO {
 		
 		return null;
 	}
+	
+	public static Paciente buscarPorId(int id) throws ClassNotFoundException{
+		Connection conexao = ConnectionFactory.abrirConexao();
+		int count = 0;
+		try {
+			Statement st = (Statement) conexao.createStatement();
+			Paciente pp1 = new Paciente();
+			
+			ResultSet res = st.executeQuery("SELECT * FROM paciente WHERE idCliente = '" + id + "'");
+			while (res.next()){
+                count = res.getInt(1);  
+                pp1.setIdCliente(Integer.parseInt(res.getString("idCliente")));
+                pp1.setNome(res.getString("nome"));
+                pp1.setIdadeBiologica(res.getString("idadeBiologica"));
+                pp1.setIdadeCronologica(res.getString("idadeCronologica"));
+                pp1.setImc(Float.parseFloat(res.getString("imc")));
+                pp1.setAltura(Float.parseFloat(res.getString("altura")));
+                pp1.setPeso(Float.parseFloat(res.getString("peso")));
+                pp1.setEmail(res.getString("email"));
+            }
+			
+			if(count > 0){
+				return pp1;
+			}
+
+			st.close();	
+		} catch (SQLException e) {
+			System.out.println(e);
+		}finally{
+			ConnectionFactory.FecharConexao();
+		}
+		
+		return null;
+	}
 }

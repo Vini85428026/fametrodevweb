@@ -36,14 +36,14 @@
       <form class="form-horizontal" method="POST" action="/Questionario">
 
       <div class="form-group">
-      <label class="col-md-7 control-label"> Resultado do usuário: </label>
+      <label class="col-md-7 control-label"> Resultado da última avaliação do usuário: </label>
         
       </div>
       <div class="form-group">
 
          <label class="col-md-4 control-label">Nome</label>  
          <div class="col-md-4">
-            <input id="inputResultNome" name="inputResultNome" type="text"  class="form-control input-md" value="${nomeDoCliente}" disabled >
+            <input id="inputResultNome" name="inputResultNome" type="text"  class="form-control input-md" value="${nome}" disabled >
          </div>
       </div>
       <div class="form-group">

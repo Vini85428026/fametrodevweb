@@ -20,6 +20,14 @@
 </head>
 <body>
 
+<% if (session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	} else {
+		if(session.getAttribute("tipo").equals("paciente")){
+			request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+		}else{	
+%>
+
 <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
             <div class="navbar-header">
@@ -34,7 +42,7 @@
       
       <ul class="nav navbar-nav navbar-right">
 				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nome} </a></li> 
-                  <li><a href="./index.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                  <li><a href="/fametrodevweb/Logout"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
       </ul>
     </div>
   </div>
@@ -59,11 +67,10 @@ Não é uma ciência exata, mas pode  identificar o que vocês estão
 fazendo certo e o que você poderia melhorar para  abrandar o 
 processo de envelhecimento.
 
-<p>Quer conhecer sua idade biológica ? Clique em <a href="login.jsp">Entrar.</a></p>
 </p> </h3>
 
 
-
+<% } } %>
 
 
 

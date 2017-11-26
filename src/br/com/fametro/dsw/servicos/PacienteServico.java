@@ -48,4 +48,17 @@ public class PacienteServico {
 				
 		return imc;
 	}
+	
+	public static String calcularIdadeBiologica(HashMap<String, Integer> map, int idadeCrono){
+		float resultadoIdade = 0;
+		for(int i = 1;i <= 13;i++){
+			int radio = map.get("radio"+i);
+			resultadoIdade = resultadoIdade + (radio);
+			System.out.println("Valor " + i + " : " + resultadoIdade);
+		}
+		
+		resultadoIdade = idadeCrono + (resultadoIdade/10);
+		
+		return Float.toString(resultadoIdade);
+	}
 }

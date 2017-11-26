@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -82,7 +84,7 @@ public class PacienteDAO {
 		return null;
 	}
 	
-	public static Paciente buscarPorId(int id) throws ClassNotFoundException{
+	public static Paciente buscarPorId(int id) throws ClassNotFoundException, ParseException{
 		Connection conexao = ConnectionFactory.abrirConexao();
 		int count = 0;
 		try {
@@ -92,8 +94,13 @@ public class PacienteDAO {
 			ResultSet res = st.executeQuery("SELECT * FROM paciente WHERE idCliente = '" + id + "'");
 			while (res.next()){
                 count = res.getInt(1);  
+                
+                SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); 
+        		Date dataNascimento = (Date) formato.parse(res.getString("dataDeNascimento")); 
+        		
                 pp1.setIdCliente(Integer.parseInt(res.getString("idCliente")));
                 pp1.setNome(res.getString("nome"));
+                pp1.setDataDeNascimento(dataNascimento);
                 pp1.setIdadeBiologica(res.getString("idadeBiologica"));
                 pp1.setIdadeCronologica(res.getString("idadeCronologica"));
                 pp1.setImc(Float.parseFloat(res.getString("imc")));

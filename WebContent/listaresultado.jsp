@@ -28,7 +28,7 @@
                   <li><a href="./pesquisa.jsp">Pesquisar <span class="glyphicon glyphicon-search"></span> </a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="./login.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                  <li><a href="/fametrodevweb/Logout"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
                </ul>
             </div>
          </div>

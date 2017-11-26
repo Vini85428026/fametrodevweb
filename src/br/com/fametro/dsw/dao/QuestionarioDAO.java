@@ -8,7 +8,7 @@ import java.util.HashMap;
 import br.com.fametro.dsw.jdbc.ConnectionFactory;
 
 public class QuestionarioDAO {
-	public boolean inserirQuestionario(int idCliente, HashMap<String, Integer> map, int idadeCrono, int idadeBio) throws ClassNotFoundException {
+	public boolean inserirQuestionario(int idCliente, HashMap<String, Integer> map, int idadeCrono, String idadeBio) throws ClassNotFoundException {
 		Connection conexao = ConnectionFactory.abrirConexao();
 		boolean result = false;
 		try {
@@ -32,12 +32,12 @@ public class QuestionarioDAO {
 			stmt.setInt(13, map.get("radio13"));
 			stmt.setInt(14, idCliente);
 			stmt.setInt(15, idadeCrono);
-			stmt.setInt(16, idadeBio);
+			stmt.setString(16, idadeBio);
 			if(stmt.executeUpdate() > 0){
 				PreparedStatement stmt2 = conexao.prepareStatement("UPDATE paciente SET"  +
 				" idadeCronologica = ?, idadeBiologica = ? WHERE idCliente = ?") ;
 				stmt2.setInt(1, idadeCrono);
-				stmt2.setInt(2, idadeBio);
+				stmt2.setString(2, idadeBio);
 				stmt2.setInt(3, idCliente);
 				
 				if(stmt2.executeUpdate() > 0){

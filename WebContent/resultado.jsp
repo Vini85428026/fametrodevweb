@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1" session="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,19 +15,27 @@
 </head>
 <body>
 
+<% if (session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	} else {
+		if(session.getAttribute("tipo").equals("admin")){
+			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+		}else{	
+%>
+
 <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
             <div class="navbar-header">
                </button>
-               <a class="navbar-brand" href="./dashboard.jsp"><img src="./img/bioidade.jpeg" width="50" height="28" /></a>
+               <a class="navbar-brand" href="./dashboard2.jsp"><img src="./img/bioidade.jpeg" width="50" height="28" /></a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
-                  <li class=""><a href="index.jsp">Inicio <span class="glyphicon glyphicon-home"></span> </a></li>
+                  <li class=""><a href="dashboard2.jsp">Inicio <span class="glyphicon glyphicon-home"></span> </a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
 			       <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nome}</a></li>
-                  <li><a href="./index.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                  <li><a href="/fametrodevweb/Logout"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
                </ul>
             </div>
          </div>
@@ -59,10 +68,18 @@
          </div>
       </div>
       <br> <br> <br> <br> <br>
+
+<% } }  %>
 	 
       <footer>
          <p> Alunos ADS FAMETRO 2017</p>
       </footer>
+      
+<c:if test="${mensagem != null}">
+	<script>
+		alert('<c:out value="${mensagem}" />');
+	</script>
+</c:if>
 
 </body>
 </html>

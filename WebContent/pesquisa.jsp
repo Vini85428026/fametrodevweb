@@ -17,6 +17,14 @@
 </head>
 <body>
 
+<% if (session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	} else {
+		if(session.getAttribute("tipo").equals("paciente")){
+			request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+		}else{	
+%>
+
  <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
             <div class="navbar-header">
@@ -31,7 +39,7 @@
       
       <ul class="nav navbar-nav navbar-right">   
 				  <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${nome} </a></li>
-                  <li><a href="./index.jsp"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
+                  <li><a href="/fametrodevweb/Logout"> <span class="glyphicon glyphicon-off"></span> Sair</a></li>
         
       </ul>
     </div>
@@ -91,6 +99,8 @@
 		  </table>
 </div>
 </div>
+      
+<% } }  %>      
       
 <footer>
         <p> Alunos ADS FAMETRO 2017</p>

@@ -56,7 +56,12 @@ public class Login extends HttpServlet {
 				sessao.setAttribute("idadeCrono", paciente.get("idadeCrono"));
 				sessao.setAttribute("idadeBio", paciente.get("idadeBio"));
 				
-				request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+				if(paciente.get("tipo") == "admin"){
+					request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+				}else{
+					request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+				}
+				
 			}else{
 				request.setAttribute("mensagem", "undefined");
 				request.getRequestDispatcher("login.jsp").forward(request, response);

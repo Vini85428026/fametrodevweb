@@ -27,7 +27,6 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
-				  <li class="active"><a href="#">Meus dados<span class="glyphicon glyphicon-tasks"></span></a></li>
                   <li><a href="./questions.jsp">Responder questionário <span class="glyphicon glyphicon-tasks"></span> </a></li>
                   <li><a href="./resultado.jsp">Resultado <span class="glyphicon glyphicon-list"></span> </a></li>
                  
@@ -49,7 +48,7 @@
 <div class="col-md-8 col-md-offset-3 text-justify">
     
     <br><br><br>
-<h1> Bem Vindo Usuário</h1>
+<h1> Bem Vindo ${nome}</h1>
 <h3><p>Sua Idade Biológica, com um sistema de cálculo de idade biológica  
 deve automatizar o processo dos resultados de uma pesquisa 
 científica feita por Thomas Perls, professor associado da 
@@ -61,7 +60,6 @@ Não é uma ciência exata, mas pode  identificar o que vocês estão
 fazendo certo e o que você poderia melhorar para  abrandar o 
 processo de envelhecimento.
 
-<p>Quer conhecer sua idade biológica ? Clique em <a href="login.jsp">Entrar.</a></p>
 </p> </h3>
 <br>
 <br>

@@ -3,6 +3,7 @@ package br.com.fametro.dsw.servlets;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
 import java.util.HashMap;
 
 import javax.crypto.BadPaddingException;
@@ -77,7 +78,7 @@ public class Questionario extends HttpServlet {
 				request.getRequestDispatcher("questions.jsp").forward(request, response);
 				System.out.println("erro ao inserir questoes!");
 			}		
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		

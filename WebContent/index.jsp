@@ -25,8 +25,8 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
-			      <li class="active"><a href="index.jsp">Início <span class="glyphicon glyphicon-home"></span> </a></li>
-                 
+				  <li><a href="index.jsp">In�cio <span class="glyphicon glyphicon-home"></span> </a></li>
+                                
                </ul>
       
       <ul class="nav navbar-nav navbar-right">       
@@ -43,7 +43,7 @@
 <div class="col-md-8 col-md-offset-3 text-justify">
     
     <br><br><br>
-<h1> Bem Vindo Administrador</h1>
+<h1> Bem Vindo</h1>
 
 <h3><p>Sua Idade Biológica, com um sistema de cálculo de idade biológica  
 deve automatizar o processo dos resultados de uma pesquisa 

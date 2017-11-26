@@ -13,7 +13,7 @@
       <link href="estilo/bootstrap/css/bootstrap.min.css" rel="stylesheet">
       <link href="estilo/style.css" rel="stylesheet">
 </head>
-<body>
+<body style="overflow-x: hidden;">
 
 <% if (session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
 		request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -67,7 +67,29 @@
             <input id="inputResultIdadeBio" name="inputResultIdadeBio" type="text"class="form-control input-md" value="${idadeCrono}" disabled> 
          </div>
       </div>
-      <br> <br> <br> <br> <br>
+      <br>       
+      <div class="col-xs-12 col-md-12">     
+      <div class="container">
+		  <table class="table">
+		    <thead>
+		      <tr>
+		        <th>Data Registro</th>
+		        <th>Idade Cronologica</th>
+		        <th>Idade Biologica</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    	<c:forEach items="${listaQuestionario}" var="item">
+				    <tr>
+				    	<td>${item.datacriacao}</td>
+				    	<td>${item.idadeCronologica}</td>
+				    	<td>${item.idadeBiologica}</td>
+				    </tr>
+				</c:forEach>
+		    </tbody>
+		  </table>
+</div>
+</div>
 
 <% } }  %>
 	 

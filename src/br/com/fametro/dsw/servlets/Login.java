@@ -1,7 +1,9 @@
 package br.com.fametro.dsw.servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.fametro.dsw.servicos.LoginService;
+import br.com.fametro.dsw.servicos.QuestionarioServico;
 
 /**
  * Servlet implementation class Login
@@ -49,12 +52,15 @@ public class Login extends HttpServlet {
 		try {
 			paciente = LoginService.buscarUsuario(login, senha);
 			if(paciente != null){
+				List questoes = QuestionarioServico.buscarQuestionarios(Integer.parseInt(paciente.get("id")));
+				
 				sessao.setAttribute("id", paciente.get("id"));
 				sessao.setAttribute("nome", paciente.get("nome"));
 				sessao.setAttribute("tipo", paciente.get("tipo"));
 				sessao.setAttribute("imc", paciente.get("imc"));
 				sessao.setAttribute("idadeCrono", paciente.get("idadeCrono"));
 				sessao.setAttribute("idadeBio", paciente.get("idadeBio"));
+				sessao.setAttribute("listaQuestionario", questoes);
 				
 				if(paciente.get("tipo") == "admin"){
 					request.getRequestDispatcher("dashboard.jsp").forward(request, response);
@@ -67,7 +73,7 @@ public class Login extends HttpServlet {
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 			}
 			
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | NumberFormatException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		

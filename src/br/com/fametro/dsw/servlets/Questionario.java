@@ -5,6 +5,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -14,8 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.fametro.dsw.modelo.Paciente;
+import br.com.fametro.dsw.servicos.PacienteServico;
 import br.com.fametro.dsw.servicos.QuestionarioServico;
 import br.com.fametro.dsw.servicos.UsuarioServico;
 
@@ -46,6 +49,7 @@ public class Questionario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession sessao = request.getSession();
 		int idCliente = Integer.parseInt(request.getParameter("idCliente"));
 
 		HashMap<String, Integer> map = new HashMap<String, Integer>();	
@@ -67,9 +71,17 @@ public class Questionario extends HttpServlet {
 		try {
 			resultado = QuestionarioServico.inserirQuestionario(idCliente, map);
 			if(resultado != null){
-				request.setAttribute("nomeDoCliente", resultado.getNome());
-				request.setAttribute("idadeBio", resultado.getIdadeBiologica());
-				request.setAttribute("idadeCrono", resultado.getIdadeCronologica());
+				List questoes = QuestionarioServico.buscarQuestionarios(idCliente);
+				
+//				request.setAttribute("nomeDoCliente", resultado.getNome());
+//				request.setAttribute("idadeBio", resultado.getIdadeBiologica());
+//				request.setAttribute("idadeCrono", resultado.getIdadeCronologica());
+//				request.setAttribute("listaQuestionario", questoes);
+				
+				sessao.setAttribute("idadeCrono", resultado.getIdadeCronologica());
+				sessao.setAttribute("idadeBio", resultado.getIdadeBiologica());
+				sessao.setAttribute("listaQuestionario", questoes);
+				
 				request.setAttribute("mensagem", "Questionário resolvido com sucesso!");
 				request.getRequestDispatcher("resultado.jsp").forward(request, response);
 				System.out.println("Questionário resolvido com sucesso!");

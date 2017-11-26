@@ -2,10 +2,20 @@ package br.com.fametro.dsw.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.mysql.jdbc.Statement;
 
 import br.com.fametro.dsw.jdbc.ConnectionFactory;
+import br.com.fametro.dsw.modelo.Paciente;
+import br.com.fametro.dsw.modelo.Questionario;
 
 public class QuestionarioDAO {
 	public boolean inserirQuestionario(int idCliente, HashMap<String, Integer> map, int idadeCrono, String idadeBio) throws ClassNotFoundException {
@@ -54,5 +64,40 @@ public class QuestionarioDAO {
 		}		
 		
 		return result;
+	}
+	
+	public List<Questionario> buscarQuestionarios(int idCliente) throws ClassNotFoundException, ParseException{
+		Connection conexao = ConnectionFactory.abrirConexao();
+		int count = 0;
+		try {
+			Statement st = (Statement) conexao.createStatement();
+			
+			List ll = new LinkedList();
+			ResultSet res = st.executeQuery("SELECT DATE_FORMAT(datacadastro, '%d/%m/%Y %H:%i:%s') as datacadastro"
+					+ ", idadeBiologica, idadeCronologica FROM formulario WHERE idCliente = " + idCliente + 
+					" ORDER BY idFormulario DESC");
+			while (res.next()){
+                count = res.getInt(1);
+ 
+                Questionario qq = new Questionario();
+                qq.setIdadeBiologica(res.getString("idadeBiologica"));
+                qq.setIdadeCronologica(res.getString("idadeCronologica"));
+                qq.setDatacriacao(res.getString("datacadastro"));
+                
+                ll.add(qq);                
+            }
+			
+			if(count > 0){
+				return ll;
+			}
+
+			st.close();	
+		} catch (SQLException e) {
+			System.out.println(e);
+		}finally{
+			ConnectionFactory.FecharConexao();
+		}
+		
+		return null;
 	}
 }

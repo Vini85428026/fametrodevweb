@@ -45,18 +45,18 @@
     <br><br><br>
 <h1> Bem Vindo</h1>
 
-<h3><p>Sua Idade BiolÃ³gica, com um sistema de cÃ¡lculo de idade biolÃ³gica  
+<h3><p>Sua Idade Biológica, com um sistema de calculo de idade biológica  
 deve automatizar o processo dos resultados de uma pesquisa 
-cientÃ­fica feita por Thomas Perls, professor associado da 
+cientí­fica feita por Thomas Perls, professor associado da 
 Boston University School of Medicine e criador  da Calculadora 
-Living to 100 Life Expectancy, ajudou a criar um questionÃ¡rio 
+Living to 100 Life Expectancy, ajudou a criar um questionário 
 que revela a "idade verdadeira" do seu corpo, que nem sempre 
-Ã© o mesmo que o  nÃºmero de aniversÃ¡rios que vocÃª comemorou. 
-NÃ£o Ã© uma ciÃªncia exata, mas pode  identificar o que vocÃªs estÃ£o
-fazendo certo e o que vocÃª poderia melhorar para  abrandar o 
+é o mesmo que o  número de aniversários que você comemorou. 
+Não é uma ciência exata, mas pode  identificar o que vocês estão
+fazendo certo e o que você poderia melhorar para  abrandar o 
 processo de envelhecimento.
 
-<p>Quer conhecer sua idade biolÃ³gica ? Clique em <a href="login.jsp">Entrar.</a></p>
+<p>Quer conhecer sua idade biológica ? Clique em <a href="login.jsp">Entrar.</a></p>
 </p> </h3>
 
 

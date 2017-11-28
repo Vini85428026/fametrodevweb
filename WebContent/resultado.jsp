@@ -91,6 +91,16 @@
 </div>
 </div>
 
+<nav aria-label="Page navigation" align="center">
+   <ul class="pagination">
+      <li>
+         <a href="#" onclick="window.print()" aria-label="Next">
+         <span aria-hidden="true">Imprimir</span>
+         </a>
+      </li>
+   </ul>
+</nav>
+
 <% } }  %>
 	 
       <footer>

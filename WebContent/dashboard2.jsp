@@ -19,6 +19,14 @@
 </head>
 <body>
 
+<% if (session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	} else {
+		if(session.getAttribute("tipo").equals("paciente")){
+			request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+		}else{	
+%>
+
 <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
             <div class="navbar-header">
@@ -63,6 +71,9 @@ processo de envelhecimento.
 </p> </h3>
 <br>
 <br>
+
+<% } }  %>
+
 <footer>
         <p> Alunos ADS FAMETRO 2017</p>
 </footer>

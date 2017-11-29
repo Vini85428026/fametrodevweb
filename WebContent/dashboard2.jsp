@@ -22,8 +22,8 @@
 <% if (session.getAttribute("id") == null || session.getAttribute("id").equals("")) {
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	} else {
-		if(session.getAttribute("tipo").equals("paciente")){
-			request.getRequestDispatcher("dashboard2.jsp").forward(request, response);
+		if(session.getAttribute("tipo").equals("admin")){
+			request.getRequestDispatcher("dashboard.jsp").forward(request, response);
 		}else{	
 %>
 
